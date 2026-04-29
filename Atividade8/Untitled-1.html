@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Atividade 8</title>
+</head>
+<body>
+
+  <h2>Exercício 1</h2>
+  <button onclick="ex1()">Executar</button>
+  <p id="res1"></p>
+
+  <h2>Exercício 2</h2>
+  <button onclick="ex2()">Executar</button>
+  <p id="res2"></p>
+
+  <script>
+    // EXERCÍCIO 1
+    function ex1() {
+      let arr = [2, 3, 4]; // você pode mudar aqui
+
+      let soma = arr.reduce((a, b) => a + b);
+      let quad1 = arr[0] ** 2;
+      let quad2 = arr[1] ** 2;
+
+      document.getElementById("res1").innerText =
+        `Soma: ${soma} | Quadrado do primeiro: ${quad1} | Quadrado do segundo: ${quad2}`;
+    }
+
+    // EXERCÍCIO 2
+    function ex2() {
+      let letras = ["a", "b", "c", "d", "e"]; // pode mudar
+
+      let palavras = [];
+
+      while (palavras.length < 10) {
+        let palavra = "";
+
+        for (let i = 0; i < 5; i++) {
+          let rand = Math.floor(Math.random() * letras.length);
+          palavra += letras[rand];
+        }
+
+        if (!palavras.includes(palavra)) {
+          palavras.push(palavra);
+        }
+      }
+
+      document.getElementById("res2").innerText = palavras.join(", ");
+    }
+  </script>
+
+</body>
+</html>
