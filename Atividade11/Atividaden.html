@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade JS</title>
+</head>
+<body>
+
+    <h2>Exercício 1</h2>
+
+    Base:
+    <input type="number" id="base">
+
+    Altura:
+    <input type="number" id="altura">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="retangulo"></p>
+
+
+
+    <h2>Exercício 2</h2>
+
+    <h3>Conta Corrente</h3>
+
+    Nome:
+    <input type="text" id="nome1">
+
+    Banco:
+    <input type="text" id="banco1">
+
+    Número:
+    <input type="number" id="numero1">
+
+    Saldo:
+    <input type="number" id="saldo1">
+
+    Saldo Especial:
+    <input type="number" id="especial1">
+
+    <button onclick="criarCorrente()">Criar Corrente</button>
+
+    <p id="conta"></p>
+
+
+
+    <h3>Conta Poupança</h3>
+
+    Nome:
+    <input type="text" id="nome2">
+
+    Banco:
+    <input type="text" id="banco2">
+
+    Número:
+    <input type="number" id="numero2">
+
+    Saldo:
+    <input type="number" id="saldo2">
+
+    Juros:
+    <input type="number" id="juros">
+
+    Vencimento:
+    <input type="text" id="vencimento">
+
+    <button onclick="criarPoupanca()">Criar Poupanca</button>
+
+    <p id="poupanca"></p>
+
+
+
+    <script>
+
+        function Retangulo(base, altura) {
+
+            this.base = base;
+            this.altura = altura;
+
+            this.calcularArea = function() {
+                return this.base * this.altura;
+            }
+
+        }
+
+        function calcular() {
+
+            let base =
+                document.getElementById("base").value;
+
+            let altura =
+                document.getElementById("altura").value;
+
+            let r1 = new Retangulo(base, altura);
+
+            document.getElementById("retangulo").innerHTML =
+                "Área do retângulo: " +
+                r1.calcularArea();
+
+        }
+
+
+
+        class Conta {
+
+            constructor(nome, banco, numero, saldo) {
+
+                this._nome = nome;
+                this._banco = banco;
+                this._numero = numero;
+                this._saldo = saldo;
+
+            }
+
+            get nome() {
+                return this._nome;
+            }
+
+            get banco() {
+                return this._banco;
+            }
+
+            get numero() {
+                return this._numero;
+            }
+
+            get saldo() {
+                return this._saldo;
+            }
+
+        }
+
+
+
+        class Corrente extends Conta {
+
+            constructor(nome, banco, numero, saldo, saldoEspecial) {
+
+                super(nome, banco, numero, saldo);
+
+                this._saldoEspecial = saldoEspecial;
+
+            }
+
+            get saldoEspecial() {
+                return this._saldoEspecial;
+            }
+
+        }
+
+
+
+        class Poupanca extends Conta {
+
+            constructor(nome, banco, numero, saldo, juros, vencimento) {
+
+                super(nome, banco, numero, saldo);
+
+                this._juros = juros;
+                this._vencimento = vencimento;
+
+            }
+
+            get juros() {
+                return this._juros;
+            }
+
+            get vencimento() {
+                return this._vencimento;
+            }
+
+        }
+
+
+
+        function criarCorrente() {
+
+            let conta1 = new Corrente(
+
+                document.getElementById("nome1").value,
+
+                document.getElementById("banco1").value,
+
+                document.getElementById("numero1").value,
+
+                document.getElementById("saldo1").value,
+
+                document.getElementById("especial1").value
+
+            );
+
+            document.getElementById("conta").innerHTML =
+
+                "Corrente: " +
+
+                conta1.nome + " - " +
+
+                conta1.banco + " - " +
+
+                conta1.numero + " - Saldo: " +
+
+                conta1.saldo + " - Especial: " +
+
+                conta1.saldoEspecial;
+
+        }
+
+
+
+        function criarPoupanca() {
+
+            let conta2 = new Poupanca(
+
+                document.getElementById("nome2").value,
+
+                document.getElementById("banco2").value,
+
+                document.getElementById("numero2").value,
+
+                document.getElementById("saldo2").value,
+
+                document.getElementById("juros").value,
+
+                document.getElementById("vencimento").value
+
+            );
+
+            document.getElementById("poupanca").innerHTML =
+
+                "Poupança: " +
+
+                conta2.nome + " - " +
+
+                conta2.banco + " - " +
+
+                conta2.numero + " - Saldo: " +
+
+                conta2.saldo + " - Juros: " +
+
+                conta2.juros + "% - Vencimento: " +
+
+                conta2.vencimento;
+
+        }
+
+    </script>
+
+</body>
+</html>
