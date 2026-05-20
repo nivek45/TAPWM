@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+</head>
+<body>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <p id="p5"></p>
+
+    <script>
+        let pessoa = {
+            nome: "João",
+            idade: 30,
+            hobby: "Tocar violão",
+
+                r: function() {
+                return `Olá, meu nome é ${this.nome}, tenho ${this.idade} anos e meu hobby é ${this.hobby}.`;
+            }
+        };
+
+        let pessoa2 = {
+            nome: "Maria",
+            idade: 25,
+            hobby: "Cozinhar",
+
+                r: function() {
+                return `Olá, meu nome é ${this.nome}, tenho ${this.idade} anos e meu hobby é ${this.hobby}.`;
+            }
+        };
+
+        function pessoa(nome, idade, hobby) {
+            return {
+                nome: nome,
+                idade: idade,
+                hobby: hobby,
+                r: function() {
+                    return `Olá, meu nome é ${this.nome}, tenho ${this.idade} anos e meu hobby é ${this.hobby}.`;
+                }
+            };
+        }
+
+        let pessoa3 = pessoa("Wilian", 28, "Futebol");   
+
+        class pessoa {
+            constructor(nome, idade, hobby) {
+                this.nome = nome;
+                this.idade = idade;
+                this.hobby = hobby;
+            }
+
+            r() {
+                return `Olá, meu nome é ${this.nome}, tenho ${this.idade} anos e meu hobby é ${this.hobby}.`;
+            }
+        }
+
+        pessoa4 = new pessoa("Jubiscreuda", 67, "Croche");
+
+        let modelo = {
+            nome: "Modelo",
+            idade: 0,
+            hobby: "Nada",
+            r: function() {
+                return `Olá, meu nome é ${this.nome}, tenho ${this.idade} anos e meu hobby é ${this.hobby}.`;
+            }
+        };
+
+        let pessoa5 = Object.create(modelo);
+        pessoa5.nome = "Carlos";
+        pessoa5.idade = 40;
+        pessoa5.hobby = "Leitura";
+
+        document.getElementById("p1").innerText = pessoa.r();
+        document.getElementById("p2").innerText = pessoa2.r();
+        document.getElementById("p3").innerText = pessoa3.r();
+        document.getElementById("p4").innerText = pessoa4.r();
+        document.getElementById("p5").innerText = pessoa5.r();
+
+
+    </script>
+</body>
+</html> 
