@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abra a Janela</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            gap: 30px;
+        }
+
+        h1 {
+            color: #000;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        #janela {
+            width: 350px;
+            height: 350px;
+            object-fit: contain;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        #janela:hover {
+            transform: scale(1.03);
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="titulo">Janela Fechada</h1>
+
+    <div class="container">
+        <img id="janela" src="janela_fechada.png" alt="Janela">
+        <p>Passe o mouse para abrir &bull; Clique para quebrar</p>
+    </div>
+
+    <script>
+        var img = document.getElementById("janela");
+        var titulo = document.getElementById("titulo");
+        var quebrada = false;
+
+        img.addEventListener("mouseover", function () {
+            if (!quebrada) {
+                img.src = "janela_aberta.png";
+                titulo.textContent = "Janela Aberta";
+            }
+        });
+
+        img.addEventListener("mouseout", function () {
+            if (!quebrada) {
+                img.src = "janela_fechada.png";
+                titulo.textContent = "Janela Fechada";
+            }
+        });
+
+        img.addEventListener("click", function () {
+            img.src = "janela_quebrada.png";
+            titulo.textContent = "Janela Quebrada";
+            quebrada = true;
+        });
+    </script>
+
+</body>
+
+</html>
