@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 1 - Atividade 14</title>
+</head>
+<body bgcolor="#ffffff">
+
+    <div style="background-color: #00a2e8; color: white; width: 380px; padding: 15px; font-family: Arial, sans-serif;">
+        
+        <h3 align="center" style="margin-top: 0; color: white;">Formulário Principal</h3>
+
+        <form name="formulario" onsubmit="return validar()">
+            
+            <label>Nome:</label><br>
+            <input type="text" name="nome" style="width: 200px;"><br><br>
+
+            <label>E-mail:</label><br>
+            <input type="email" name="email" style="width: 350px;"><br><br>
+
+            <label>Comentário:</label><br>
+            <textarea name="comentario" style="width: 200px; height: 100px;"></textarea><br><br>
+
+            <div align="center">
+                <b>Pesquisa:</b><br><br>
+                <i>Primeira vez nesta página??</i><br><br>
+                <input type="radio" name="primeiraVez" value="Sim"> Sim
+                <input type="radio" name="primeiraVez" value="Não"> Não
+                <br><br>
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Limpar">
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        function validar() {
+            var form = document.formulario;
+            var nome = form.elements['nome'].value;
+            var email = form.elements['email'].value;
+            var comentario = form.elements['comentario'].value;
+            var radios = form.elements['primeiraVez'];
+
+            if (nome.length < 10) {
+                alert("Nome não pode ter menos que 10 caracteres.");
+                return false;
+            }
+
+            if (email === "") {
+                alert("Email obrigatório.");
+                return false;
+            }
+
+            if (comentario.length < 20) {
+                alert("Comentário deve ter no mínimo 20 caracteres.");
+                return false;
+            }
+
+            var opcao = "";
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    opcao = radios[i].value;
+                    break;
+                }
+            }
+
+            if (opcao === "") {
+                alert("Pesquisa é obrigatória.");
+                return false;
+            }
+
+            if (opcao === "Não") {
+                alert("Que bom que você voltou a visitar esta página!");
+            } else {
+                alert("Volte sempre à está página!");
+            }
+
+            return true;
+        }
+    </script>
+
+</body>
+</html>
